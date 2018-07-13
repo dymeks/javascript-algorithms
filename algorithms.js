@@ -426,4 +426,30 @@ function mergeTwoArrays(arr1,arr2){
 }
 
 // mergeTwoArrays([1,5,10],[2,4,7,9,15]);
-mergeSort([1,4,10,2,23,5,17]);
+// mergeSort([1,4,10,2,23,5,17]);
+
+function bubbleSort(arr){
+	let Swap = true;
+	let index = 0;
+
+	while(Swap){
+		madeSwap = false;
+		while(index < arr.length -1){
+			if(arr[index] > arr[index + 1]){
+				let temp = arr[index];
+				arr[index] = arr[index+1];
+				arr[index+1] = temp;
+				madeSwap = true;
+			} 
+			index++;
+		}
+		if(!madeSwap) {
+			Swap = false;
+		}
+		index = 0;
+	}
+
+	return arr;
+}
+
+console.log(bubbleSort([64, 34, 25, 12, 22, 11, 90]));
