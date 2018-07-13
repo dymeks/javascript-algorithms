@@ -5,7 +5,7 @@ function print1_255(){
 	}
 }
 
-//pritn odd numbers between 1 and 255
+//print odd numbers between 1 and 255
 function print_odds(){
 	for(var i =1; i <=255; i++){
 		if(i%2 != 0){
@@ -329,50 +329,101 @@ function removeNegatives(arr) {
 
 // removeNegatives([-1,-3,-2,-5,-8,-9]);
 
-function quickSortInitial(arr){
-	console.log("I'm TOP Quicksort");
-	quickSort(arr, 0, arr.length -1);
+// function quickSortInitial(arr){
+// 	console.log("I'm TOP Quicksort");
+// 	quickSort(arr, 0, arr.length -1);
 	
-}
+// }
 
-function quickSort(arr, leftIndex, rightIndex){
-	console.log("I'm LOWER Quicksort");
-	console.log(leftIndex + " " + rightIndex);
-	if(leftIndex >= rightIndex){
-		return;
+// function quickSort(arr, leftIndex, rightIndex){
+// 	console.log("I'm LOWER Quicksort");
+// 	console.log(leftIndex + " " + rightIndex);
+// 	if(leftIndex >= rightIndex){
+// 		return;
+// 	}
+
+// 	let pivotIndex = Math.floor((leftIndex + rightIndex) /2);
+
+// 	let sortedIndex = partition(arr, leftIndex, rightIndex, pivotIndex);
+
+// 	quickSort(arr, leftIndex, sortedIndex - 1);
+// 	quickSort(arr, sortedIndex, rightIndex);
+// }
+
+// function partition(arr, leftIndex, rightIndex, pivotIndex){
+// 	console.log("I'm in PARTITION!");
+// 	console.log( leftIndex +" "+ rightIndex)
+// 	while(leftIndex <= rightIndex){
+// 		while(arr[leftIndex] < arr[pivotIndex]){
+// 			leftIndex++;
+// 		}
+
+// 		while(arr[rightIndex] > arr[pivotIndex]){
+// 			rightIndex--;
+// 		}
+// 		console.log("left and right before swap: " + leftIndex + " " + rightIndex);
+// 		if(arr[leftIndex] < arr[rightIndex]){
+// 			var temp = arr[leftIndex];
+// 			arr[leftIndex] = arr[rightIndex];
+// 			arr[rightIndex] = temp;
+
+// 			leftIndex++;
+// 			rightIndex--;
+// 		}
+// 	}
+
+// 	return leftIndex;
+// }
+
+// quickSortInitial([1,5,10,3,9,2]);
+
+function mergeSort(arr){
+	if(arr.length == 1){
+		return arr;
 	}
 
-	let pivotIndex = Math.floor((leftIndex + rightIndex) /2);
+	let halfwayIndex = Math.floor(arr.length/2);
+	let leftside = arr.slice(0,halfwayIndex);
+	let rightside = arr.slice(halfwayIndex);
 
-	let sortedIndex = partition(arr, leftIndex, rightIndex, pivotIndex);
+	let left = mergeSort(leftside);
+	let right = mergeSort(rightside);
 
-	quickSort(arr, leftIndex, sortedIndex - 1);
-	quickSort(arr, sortedIndex, rightIndex);
+	return mergeTwoArrays(left, right);
 }
 
-function partition(arr, leftIndex, rightIndex, pivotIndex){
-	console.log("I'm in PARTITION!");
-	console.log( leftIndex +" "+ rightIndex)
-	while(leftIndex <= rightIndex){
-		while(arr[leftIndex] < arr[pivotIndex]){
-			leftIndex++;
-		}
+function mergeTwoArrays(arr1,arr2){
+	let pointer1 = 0;
+	let pointer2 = 0;
+	let result = [];
 
-		while(arr[rightIndex] > arr[pivotIndex]){
-			rightIndex--;
-		}
-		console.log("left and right before swap: " + leftIndex + " " + rightIndex);
-		if(arr[leftIndex] < arr[rightIndex]){
-			var temp = arr[leftIndex];
-			arr[leftIndex] = arr[rightIndex];
-			arr[rightIndex] = temp;
-
-			leftIndex++;
-			rightIndex--;
+	while(pointer1 < arr1.length && pointer2 < arr2.length){
+		// console.log(pointer1);
+		// console.log(pointer2);
+		// console.log(" ");
+		if(arr1[pointer1] <= arr2[pointer2]) {
+			result.push(arr1[pointer1]);
+			pointer1++;
+		} else if (arr2[pointer2] < arr1[pointer1]){
+			result.push(arr2[pointer2]);
+			pointer2++;
 		}
 	}
 
-	return leftIndex;
+	if(pointer2 == arr2.length){
+		while(pointer1 < arr1.length){
+			result.push(arr1[pointer1]);
+			pointer1++;
+		}
+	} else if(pointer1 == arr1.length){
+		while(pointer2 < arr2.length){
+			result.push(arr2[pointer2]);
+			pointer2++;
+		}
+	}
+	console.log(result);
+	return result;
 }
 
-quickSortInitial([1,5,10,3,9,2]);
+// mergeTwoArrays([1,5,10],[2,4,7,9,15]);
+mergeSort([1,4,10,2,23,5,17]);
