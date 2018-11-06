@@ -473,3 +473,29 @@ function fib(n) {
     return currentNumber;
 
 }
+
+//Given a singly-linked list, determine whether 
+//it is cirular or not.
+function circular(list) {
+
+    let walker = list.head;
+    let runner = list.head;
+
+    while(runner != null){
+        walker = walker.next;
+        if(runner.next != null){
+            runner = runner.next.next;
+        } else {
+            runner = runner.next;
+        }
+
+        if(walker == runner){
+            return true;
+        }
+
+        
+    }
+
+    return false;
+
+}
