@@ -453,3 +453,23 @@ function bubbleSort(arr){
 }
 
 console.log(bubbleSort([64, 34, 25, 12, 22, 11, 90]));
+
+
+//Finds the fibonacci number iteratively 
+function fib(n) {
+    if(n == 0 || n == 1){
+        return n;
+    }
+
+    let previousNumber = 0;
+    let currentNumber = 1;
+
+    for(let i = 2; i <= n; i++){
+        let temp = previousNumber;
+        previousNumber = currentNumber;
+        currentNumber = temp + currentNumber; 
+    }
+
+    return currentNumber;
+
+}
