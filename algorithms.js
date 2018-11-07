@@ -501,3 +501,15 @@ function circular(list) {
     return false;
 
 }
+
+//Reverses an Integer using javaScript built in functions.
+//Returns the reversed number.
+function reverseInt(n){
+	const reversedNum = n
+		.toString()
+		.split('')
+		.reverse()
+		.join('');
+
+	return parseInt(reverseNum) * Math.sign(n);
+}
