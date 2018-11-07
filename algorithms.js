@@ -224,6 +224,8 @@ function isSupervolcaic(str){
 	return true;
 }
 
+//Determines whether a string is a palendrome or not.
+//Returns true if the string is a palendrome or false otherwise
 function isPalendrome(str){
 	start_index = 0;
 	end_index = len(str) -1;
