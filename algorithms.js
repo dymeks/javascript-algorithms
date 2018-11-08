@@ -513,3 +513,29 @@ function reverseInt(n){
 
 	return parseInt(reverseNum) * Math.sign(n);
 }
+
+//Find the most frequently used Character in a string.
+//Returns that character
+function maxChar(str) {
+    let lettersCount = {};
+    let max = 0;
+    let freqChar = "";
+
+    for(let char of str){
+        
+        if(lettersCount[char]){
+            lettersCount[char]++;
+        } else {
+            lettersCount[char] = 1;
+        }
+         
+    }
+
+    for (let char in lettersCount){
+        if(lettersCount[char] > max){
+            freqChar = char;
+            max = lettersCount[char];
+        }
+    }
+    return freqChar;
+}
