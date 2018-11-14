@@ -539,3 +539,18 @@ function maxChar(str) {
     }
     return freqChar;
 }
+
+//Divides an array into chunks based on a specified size.
+//Makes use of javascript splic function to do so.
+function chunk(array, size) {
+    let result = [];
+    let endIndex = size;
+
+    for(let i = 0; i < array.length; i + size) {
+        let small = array.splice(i,size);
+        result.push(small);
+        endIndex += size;
+    }
+
+    return result;
+}
