@@ -554,3 +554,51 @@ function chunk(array, size) {
 
     return result;
 }
+
+//Divides an array into chunks based on a specified size.
+//Does not use the built in splice function.
+function chunk(array, size) {
+    let result = [];
+    
+    for(let i = 0; i < array.length; i++) {
+		const recent = result[result.length -1];
+		
+		if(!recent || recent.length === size) {
+			result.push([recent]);
+		} else {
+			recent.push(array[i]);
+		}
+    }
+
+    return result;
+}
+
+
+//Anagrams broken up into two functions.
+//determines if two strings are anagrams of each other.
+//Ignores punctuation and capitalization.
+function anagrams(stringA, stringB) {
+    let MapA = createMap(stringA);
+    let MapB = createMap(stringB);
+    
+    if(Object.keys(MapA).length != Object.keys(MapB).length){
+        return false;
+    }
+    for(let key in MapA){
+        if(MapA[key] != MapB[key]){
+            return false
+        }
+    }
+    return true;
+}
+
+function createMap(str){
+    let replaced = str.replace(/[\W]/g,'').toLowerCase();
+    let charMap = {};
+
+    for(let char of replaced){
+        charMap[char] = charMap[char] + 1 || 1;
+    }
+    console.log(charMap);
+    return charMap;
+}
