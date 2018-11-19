@@ -615,3 +615,20 @@ function capitalize(str) {
 
     return words.join(" ");
 }
+
+//create a function that prints n steps.
+//Starts on the right.
+function steps(n) {
+    for(let i = 1; i <= n; i++){
+        let step = "";
+        for(let j = 0; j < n; j++){
+            if(j < i){
+                step += "#";
+            } else {
+                step += " ";
+            }
+        }
+        console.log(step);
+    }
+
+}
