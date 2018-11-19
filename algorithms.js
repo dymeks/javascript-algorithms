@@ -602,3 +602,16 @@ function createMap(str){
     console.log(charMap);
     return charMap;
 }
+
+//Capitalizes the first letter of each word in a sentence.
+function capitalize(str) {
+    let words = str.split(" ");
+    for(let i = 0; i < words.length; i++){
+        let letters = words[i].split('');
+        letters[0] = letters[0].toUpperCase();
+        let upperWord = letters.join('');
+        words[i] = upperWord;
+    }
+
+    return words.join(" ");
+}
