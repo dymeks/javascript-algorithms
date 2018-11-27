@@ -632,3 +632,28 @@ function steps(n) {
     }
 
 }
+
+//Prints a Pyramid with n levels.
+//Takes a integer n.
+function rPyramid(n, row = 0, level ='') {
+    if(row === n){
+        return;
+    }
+
+    if(level.length === (2*n -1)){
+        console.log(level);
+        return pyramid(n,row+1);
+    }
+
+    const midpoint = Math.floor((2*n -1)/2);
+    if(midpoint - row <= level.length && midpoint + row >= level.length){
+        level += "#";
+        
+    }else {
+        level += " "; 
+    }
+
+    pyramid(n,row,level);
+}
+
+rPyramid(3);
