@@ -642,7 +642,7 @@ function rPyramid(n, row = 0, level ='') {
 
     if(level.length === (2*n -1)){
         console.log(level);
-        return pyramid(n,row+1);
+        return rPyramid(n,row+1);
     }
 
     const midpoint = Math.floor((2*n -1)/2);
@@ -653,7 +653,45 @@ function rPyramid(n, row = 0, level ='') {
         level += " "; 
     }
 
-    pyramid(n,row,level);
+    rPyramid(n,row,level);
 }
 
 rPyramid(3);
+
+class Queue {
+    
+    constructor(){
+        this.body = [];
+    }
+
+    remove(){
+        return this.body.shift();
+    }
+
+    add(value){
+        this.body.push(value);
+        return this;
+    }
+}
+
+let q = new Queue();
+q.add(1);
+console.log(q);
+q.add(4);
+console.log(q);
+q.remove();
+console.log(q);
+// public static int VowelCount(string str){
+//     string lowercase = str.ToLower();
+//     char[] vowels = new char[] {'a','e','i','o','u'};
+//     int count = 0;
+
+//     foreach(char letter in lowercase){
+//         if(Array.Exists(vowels,letter)){
+//             count++;
+//         }
+//     }
+//     return count;
+// }
+
+ // VowelCount("Happy Birthday!");
