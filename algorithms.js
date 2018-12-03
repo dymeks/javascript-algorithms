@@ -671,9 +671,33 @@ class Queue {
     add(value){
         this.body.push(value);
         return this;
-    }
+	}
+	
+	peek(){
+		if(this.data.length === 0){
+			return null;
+		}
+		return this.data[this.data.length -1];
+	}
 }
 
+function weave(sourceOne, sourceTwo) {
+    let result = new Queue();
+    while(sourceOne.data.length > 0 && sourceTwo.data.length > 0){
+        result.add(sourceOne.remove());
+        result.add(sourceTwo.remove());
+    }
+
+    while(sourceOne.data.length > 0){
+        result.add(sourceOne.remove());
+    }
+
+    while(sourceTwo.data.length > 0){
+        result.add(sourceTwo.remove());
+    }
+
+    return result;
+}
 let q = new Queue();
 q.add(1);
 console.log(q);
