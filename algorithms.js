@@ -680,6 +680,50 @@ class Queue {
 		return this.data[this.data.length -1];
 	}
 }
+//Queue class using two Stacks.
+//Functions: Add, Remove and Peek
+
+// class Queue {
+    
+//     constructor(){
+//         this.body = new Stack();
+//         this.second = new Stack();
+//     }
+
+//     add(input){
+//         this.body.push(input);
+//     }
+
+//     remove() {
+
+//         while(this.body.peek()){
+//             this.second.push(this.body.pop());
+//         }
+
+//         let result = this.second.pop();
+
+//         while(this.second.peek()){
+//             this.body.push(this.second.pop());
+//         }
+
+//         return result;
+//     }
+
+//     peek() {
+
+//         while(this.body.peek()){
+//             this.second.push(this.body.pop());
+//         }
+
+//         let result = this.second.peek();
+
+//         while(this.second.peek()){
+//             this.body.push(this.second.pop());
+//         }
+
+//         return result;
+//     }
+// }
 
 function weave(sourceOne, sourceTwo) {
     let result = new Queue();
