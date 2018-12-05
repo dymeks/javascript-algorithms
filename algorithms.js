@@ -749,6 +749,19 @@ q.add(4);
 console.log(q);
 q.remove();
 console.log(q);
+
+class Node {
+    constructor(value, next){
+        this.data = value;
+        this.next = next;
+    }
+}
+
+class LinkedList {
+    constructor(){
+        this.head = null;
+    }
+}
 // public static int VowelCount(string str){
 //     string lowercase = str.ToLower();
 //     char[] vowels = new char[] {'a','e','i','o','u'};
