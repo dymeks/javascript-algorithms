@@ -760,6 +760,124 @@ class Node {
 class LinkedList {
     constructor(){
         this.head = null;
+	}
+	
+	insertFirst(data){
+        let newData = new Node(data, null);
+        
+        newData.next = this.head;
+        this.head = newData;
+    }
+
+    size(){
+        let count = 0;
+        let current = this.head;
+        while(current != null){
+            count++;
+            current = current.next;
+        }
+
+        return count;
+    }
+
+    getFirst(){
+        return this.head;
+    }
+
+    getLast(){
+        let current = this.head;
+        
+        if(current != null){
+            while(current.next != null){
+                current = current.next;
+            }
+        }
+        return current;
+    }
+
+    clear(){
+        this.head = null;
+    }
+
+    removeFirst(){
+        if(this.head != null){
+            this.head = this.head.next;
+        }
+        
+    }
+
+    removeLast(){
+        let current = this.head;
+        if(current != null){
+            //the list only contains one element.
+            if(current.next == null) {
+                this.head = null;
+            } else {
+                while(current.next.next != null){
+                    current = current.next;
+                }
+    
+                current.next = current.next.next;
+            }
+ 
+        }
+  
+    }
+
+    insertLast(data){
+        let newData = new Node(data, null);
+        let current = this.head;
+
+        if(current == null){
+            //the list only contains no elements.
+            this.head = newData;
+        } else {
+            while(current.next != null){
+                current = current.next;
+            }
+
+            current.next = newData;
+        }
+    }
+
+    getAt(index){
+        let current = this.head;
+        let currentIndex = 0;
+
+        while(current != null && currentIndex < index){
+            currentIndex++;
+            current = current.next;
+        }
+
+        return current;
+    }
+
+    removeAt(index){
+    
+        let current = this.head;
+        let currentIndex = 1;
+
+        if(current != null){
+            if(index == 0){
+                this.head = this.head.next;
+                return; 
+            }
+            
+            if(current.next != null){
+                while(current != null && currentIndex < index){
+                    current = current.next;
+                    currentIndex++;
+                }
+                
+                if(current.next != null){
+                    current.next = current.next.next;
+                }
+            }
+            
+                
+            
+ 
+        }
     }
 }
 // public static int VowelCount(string str){
