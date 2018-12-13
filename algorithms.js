@@ -873,10 +873,22 @@ class LinkedList {
                     current.next = current.next.next;
                 }
             }
+        }
+	}
+	
+	insertAt(data, index){
+        // let newNode = new Node(data, null);
+        if(index == 0){
+            this.insertFirst(data);
+        } else if (index >= this.size()){
+            this.insertLast(data);
+        } else {
+            let newNode = new Node(data);
             
-                
-            
- 
+            let NodeBefore = this.getAt(index -1);
+            newNode.next = NodeBefore.next;
+            NodeBefore.next = newNode;
+
         }
     }
 }
